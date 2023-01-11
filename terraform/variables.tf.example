@@ -13,6 +13,11 @@ variable "WEBSITE_URL" {
   default = "password-protected-lambda.mydomain.com"
 }
 
+variable "FUNCTION_NAME" {
+  type = string
+  default = "Password_Protected_Lambda"
+}
+
 # todo have to create this manually because not using route53?
 variable "certificate_arn" {
   type = string

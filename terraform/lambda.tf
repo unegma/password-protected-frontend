@@ -9,7 +9,7 @@ data "archive_file" "Lambda_function_archive" {
 
 # Create the Lambda@Edge function
 resource "aws_lambda_function" "lambda_edge_function" {
-  function_name = "Password_Protected_Lambda"
+  function_name = var.FUNCTION_NAME
   filename = data.archive_file.Lambda_function_archive.output_path
   role             = aws_iam_role.lambda_edge_role.arn
   handler          = "index.handler"
