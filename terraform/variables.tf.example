@@ -12,3 +12,9 @@ variable "WEBSITE_URL" {
   type = string
   default = "password-protected-lambda.mydomain.com"
 }
+
+# todo have to create this manually because not using route53?
+variable "certificate_arn" {
+  type = string
+  default = "arn:aws:acm:us-east-1:123456:certificate/1234567890"
+}
