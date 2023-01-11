@@ -43,9 +43,9 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     default_ttl            = 3600
     max_ttl                = 86400
 
-    function_association {
+    lambda_function_association {
       event_type   = "viewer-request"
-      function_arn = aws_lambda_function.lambda_edge_function.arn
+      lambda_arn = aws_lambda_function.lambda_edge_function.qualified_arn # The lambda_arn must include the version, that’s why the qualified_arn has to be used here. https://advancedweb.hu/how-to-use-lambda-edge-with-terraform/
     }
   }
 #

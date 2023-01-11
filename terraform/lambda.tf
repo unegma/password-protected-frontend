@@ -15,6 +15,8 @@ resource "aws_lambda_function" "lambda_edge_function" {
   runtime          = "nodejs16.x"
   source_code_hash = data.archive_file.Lambda_function_archive.output_base64sha256
 
+  publish = true # publish new version for every change: https://advancedweb.hu/how-to-use-lambda-edge-with-terraform/
+
   environment {
     variables = {
       "BUCKET_NAME" = aws_s3_bucket_website_configuration.password-protected-lambda.id

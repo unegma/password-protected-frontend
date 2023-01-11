@@ -62,4 +62,5 @@ variables.tf
 ## terraform state contains sensitive variables and should be handled in a different way
 terraform.tfstate
 terraform.tfstate.backup
+.terraform.tfstate.lock.info
 .terraform.lock.hcl
