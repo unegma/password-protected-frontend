@@ -23,7 +23,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 #    prefix          = "myprefix"
 #  }
 
-#  aliases = [var.WEBSITE_URL] # can't use with certificate
+  aliases = [var.WEBSITE_URL]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
