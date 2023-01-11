@@ -1,6 +1,6 @@
 {
-  "name": "lambda",
-  "version": "1.81.0",
+  "name": "password-protecting-lambda",
+  "version": "1.83.0",
   "main": "index.js",
   "scripts": {
     "install-deps": "npm install;",
