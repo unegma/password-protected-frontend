@@ -24,6 +24,7 @@ export const handler = (event: any, context: any = {}, callback: any): any => {
   const request = event.Records[0].cf.request;
   const headers = request.headers;
 
+  // todo function can't have environment variables, so lets hope these are copied in
   // Configure authentication
   const authUser = AUTH_USER;
   const authPass = AUTH_PASS;

@@ -5,6 +5,7 @@ data "archive_file" "Lambda_function_archive" {
   output_path = "${path.module}/../aws/lambda/dist/function.zip"
 }
 
+# todo seems like it is installing dev dependencies
 
 # Create the Lambda@Edge function
 resource "aws_lambda_function" "lambda_edge_function" {
@@ -17,11 +18,5 @@ resource "aws_lambda_function" "lambda_edge_function" {
 
   publish = true # publish new version for every change: https://advancedweb.hu/how-to-use-lambda-edge-with-terraform/
 
-  environment {
-    variables = {
-      "BUCKET_NAME" = aws_s3_bucket_website_configuration.password-protected-lambda.id
-      "AUTH_USER"    = var.AUTH_USER
-      "AUTH_PASS"    = var.AUTH_PASS
-    }
-  }
+  # function can't have environment variables
 }
