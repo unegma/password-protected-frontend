@@ -30,13 +30,5 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@unegma/aws-utilities": "^2.0.0",
-    "@unegma/logger": "^3.1.4",
-    "@unegma/utilities": "^1.3.2",
-    "aws-sdk": "^2.780.0",
-    "axios": "^0.21.4",
-    "dotenv": "^8.2.0",
-    "googleapis": "^105.0.0",
-    "node-fetch": "^2.6.1"
   }
 }
