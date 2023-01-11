@@ -1,6 +1,6 @@
 {
   "name": "lambda",
-  "version": "1.80.0",
+  "version": "1.81.0",
   "main": "index.js",
   "scripts": {
     "install-deps": "npm install;",
