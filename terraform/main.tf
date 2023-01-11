@@ -17,16 +17,26 @@ provider "aws" {
   max_retries = 1
 }
 
-
 # Create an S3 bucket for hosting a static website
-resource "aws_s3_bucket" "password-protected-lambda" {
-  bucket = "password-protected-lambda.mydomain.com"
-  acl    = "public-read"
+resource "aws_s3_bucket" "bucket-1" {
+  bucket = var.WEBSITE_URL
+}
 
-  website {
-    index_document = "${path.module}/../aws/s3/dist/index.html"
-    error_document = "${path.module}/../aws/s3/dist/index.html"
-  }
+data "aws_s3_bucket" "selected-bucket" {
+  bucket = aws_s3_bucket.bucket-1.bucket
+}
+
+resource "aws_s3_bucket_website_configuration" "password-protected-lambda" {
+  bucket = data.aws_s3_bucket.selected-bucket.bucket
+  #acl    = "public-read"
+
+    index_document {
+      suffix = "index.html"
+    }
+
+    error_document {
+      key = "index.html"
+    }
 }
 
 # Create an IAM role for the Lambda@Edge function
@@ -80,7 +90,7 @@ policy = <<EOF
         "s3:GetObject"
       ],
       "Resource": [
-        "${aws_s3_bucket.password-protected-lambda.arn}/*"
+        "arn:aws:s3:::${var.WEBSITE_URL}"
       ],
       "Effect": "Allow"
     },
@@ -123,7 +133,7 @@ resource "aws_lambda_function" "lambda_edge_function" {
 
   environment {
     variables = {
-      "BUCKET_NAME" = aws_s3_bucket.password-protected-lambda.id
+      "BUCKET_NAME" = aws_s3_bucket_website_configuration.password-protected-lambda.id
       "AUTH_USER"    = var.AUTH_USER
       "AUTH_PASS"    = var.AUTH_PASS
     }

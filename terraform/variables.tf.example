@@ -17,3 +17,8 @@ variable "AUTH_PASS" {
   type = string
   default = "somesecurepassword1*"
 }
+
+variable "WEBSITE_URL" {
+  type = string
+  default = "password-protected-lambda.mydomain.com"
+}
