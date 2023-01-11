@@ -26,8 +26,10 @@ export const handler = (event: any, context: any = {}, callback: any): any => {
 
   // todo function can't have environment variables, so lets hope these are copied in
   // Configure authentication
-  const authUser = AUTH_USER;
-  const authPass = AUTH_PASS;
+  const authUser = "tim";
+  // const authUser = AUTH_USER;
+  const authPass = "somesecurepassword1*"; // might want to somehow inject this at build time, or get from database
+  // const authPass = AUTH_PASS;
   //const authPass = Buffer.from("Y2xhcml0eTE0O......SE=", 'base64').toString('ascii');
 
 
