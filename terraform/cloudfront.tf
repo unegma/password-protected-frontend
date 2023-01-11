@@ -23,7 +23,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 #    prefix          = "myprefix"
 #  }
 
-  aliases = [var.WEBSITE_URL]
+#  aliases = [var.WEBSITE_URL] # can't use with certificate
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -108,7 +108,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   viewer_certificate {
     acm_certificate_arn = aws_acm_certificate.cert.arn
-#    cloudfront_default_certificate = true
+#    cloudfront_default_certificate = true # todo is this needed?
     # todo which of these?
     ssl_support_method = "sni-only"
 #    ssl_support_method = "vip"
