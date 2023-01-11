@@ -5,7 +5,7 @@
   "dependencies": {
   },
   "scripts": {
-    "deploy": ". .env && aws --profile $PROFILE s3 sync --delete ./build s3://$AWS_BUCKET_NAME",
+    "deploy": ". .env && aws --profile $PROFILE s3 sync --delete ./build s3://$AWS_BUCKET_NAME"
   },
   "browserslist": {
     "production": [
