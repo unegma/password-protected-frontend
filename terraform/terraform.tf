@@ -36,7 +36,25 @@ EOF
 # Create a policy for the Lambda@Edge function to allow it to read from the S3 bucket and write to CloudWatch logs
 resource "aws_iam_policy" "lambda_edge_policy" {
   name = "lambda_edge_policy"
-  policy = <<EOF
+
+#{
+#"Version": "2008-10-17",
+#"Id": "PolicyForCloudFrontPrivateContent",
+#"Statement": [
+#{
+#"Sid": "1",
+#"Effect": "Allow",
+#"Principal": {
+#"AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E1********"
+#},
+#"Action": "s3:GetObject",
+#"Resource": "arn:aws:s3:::MY.DOMAIN.NAME/*"
+#}
+#]
+#}
+
+
+policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
