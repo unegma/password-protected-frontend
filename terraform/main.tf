@@ -19,13 +19,15 @@ provider "aws" {
 
 
 # Create an S3 bucket for hosting a static website
-resource "aws_s3_bucket" "password-protected-lambda" {
+resource "aws_s3_bucket_website_configuration" "password-protected-lambda" {
   bucket = "password-protected-lambda.mydomain.com"
   acl    = "public-read"
 
-  website {
-    index_document = "${path.module}/../aws/s3/dist/index.html"
-    error_document = "${path.module}/../aws/s3/dist/index.html"
+  index_document {
+    suffix = "${path.module}/../aws/s3/dist/index.html"
+  }
+  error_document {
+    suffix = "${path.module}/../aws/s3/dist/index.html"
   }
 }
 
