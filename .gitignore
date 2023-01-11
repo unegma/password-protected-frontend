@@ -59,3 +59,7 @@ environment.json
 # serverless
 .terraform
 variables.tf
+## terraform state contains sensitive variables and should be handled in a different way
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
