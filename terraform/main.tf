@@ -1,7 +1,22 @@
 # Configure the AWS provider
-provider "aws" {
-  region = "us-east-1"
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      #      version = "~> 3.27"
+    }
+  }
+
+  #  required_version = ">= 0.14.9"
 }
+
+provider "aws" {
+  profile = var.profile
+  region = var.region
+  max_retries = 1
+}
+
 
 # Create an S3 bucket for hosting a static website
 resource "aws_s3_bucket" "website" {
