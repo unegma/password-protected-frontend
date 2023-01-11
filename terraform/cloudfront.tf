@@ -11,10 +11,6 @@ resource "aws_cloudfront_origin_access_identity" "example" {
 
 data "aws_cloudfront_cache_policy" "cloudfront_cache_policy" {
   name        = "Managed-CachingOptimized"
-  comment     = "Default policy when CF compression is enabled"
-  default_ttl = 86400
-  max_ttl     = 31536000
-  min_ttl     = 1
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
