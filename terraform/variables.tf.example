@@ -1,0 +1,19 @@
+variable "profile" {
+  type = string
+  default = "unegma"
+}
+
+variable "region" {
+  type = string
+  default = "eu-west-2"
+}
+
+variable "AUTH_USER" {
+  type = string
+  default = "tim"
+}
+
+variable "AUTH_PASS" {
+  type = string
+  default = "somesecurepassword1*"
+}
