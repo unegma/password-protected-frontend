@@ -5,11 +5,19 @@ locals {
   s3_origin_id = "myS3Origin"
 }
 
+resource "aws_cloudfront_origin_access_identity" "example" {
+  comment = "Some comment"
+}
+
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name              = aws_s3_bucket.bucket-1.bucket_regional_domain_name
     #origin_access_control_id = aws_cloudfront_origin_access_control.default.id
     origin_id                = local.s3_origin_id
+
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.example.cloudfront_access_identity_path
+    }
   }
 
   enabled             = true

@@ -74,3 +74,20 @@ resource "aws_iam_policy_attachment" "lambda_edge_policy_attachment" {
   policy_arn = aws_iam_policy.lambda_edge_policy.arn
   roles      = [aws_iam_role.lambda_edge_role.name]
 }
+
+data "aws_iam_policy_document" "s3_policy" {
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${aws_s3_bucket.bucket-1.arn}/*"]
+
+    principals {
+      type        = "AWS"
+      identifiers = [aws_cloudfront_origin_access_identity.example.iam_arn]
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "example" {
+  bucket = aws_s3_bucket.bucket-1.id
+  policy = data.aws_iam_policy_document.s3_policy.json
+}
