@@ -94,7 +94,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 #    viewer_protocol_policy = "redirect-to-https"
 #  }
 
-  price_class = "PriceClass_200"
+  price_class = "PriceClass_100"
 
   restrictions {
     geo_restriction {
@@ -114,6 +114,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     # todo which of these?
     ssl_support_method = "sni-only"
 #    ssl_support_method = "vip"
-    minimum_protocol_version = "TLSv1"
+    minimum_protocol_version = "TLSv1.2_2019"
   }
 }
