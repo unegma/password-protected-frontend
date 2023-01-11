@@ -8,7 +8,8 @@ resource "aws_s3_bucket" "website" {
   bucket = "password-protected-lambda.mydomain.com"
   acl    = "public-read"
   website {
-    index_document = "${path.module}/../aws/s3/dist"
+    index_document = "${path.module}/../aws/s3/dist/index.html"
+    error_document = "${path.module}/../aws/s3/dist/index.html"
   }
 }
 
