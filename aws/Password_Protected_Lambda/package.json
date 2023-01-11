@@ -1,6 +1,6 @@
 {
   "name": "password-protecting-lambda",
-  "version": "1.84.0",
+  "version": "1.86.0",
   "main": "index.js",
   "scripts": {
     "install-deps": "npm install;",
@@ -9,11 +9,9 @@
     "compile-watch": "npx tsc -w",
     "compile-on-fly": "ts-node ./src/index.ts",
     "### Deploy Functions": "",
-    "publish-individual": ". .env && (cd dist; zip -qr ./function.zip .) && aws --profile $AWS_PROFILE --region $AWS_REGION lambda update-function-code --function-name $AWS_FUNCTION_NAME --zip-file fileb://./dist/function.zip",
     "BUILD": "npm run compile && cp package.json ./dist && (cd ./dist && npm install --only=production && npx node-prune)",
     "CLEANUP": "rm -R ./dist/node_modules && rm ./dist/package.json && rm ./dist/package-lock.json && rm ./dist/function.zip",
-    "TAG": "npm version --commit-hooks false --git-tag-version false minor",
-    "DEPLOY-INDIVIDUAL": "npm run BUILD && npm run publish-individual && npm run CLEANUP && npm run TAG"
+    "TAG": "npm version --commit-hooks false --git-tag-version false minor"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.83",

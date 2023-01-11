@@ -18,6 +18,12 @@ const {
   AUTH_PASS,
 }: any = process.env;
 
+/**
+ * Only update using terraform, because the function needs to be redeployed anew when changes are made
+ * @param event
+ * @param context
+ * @param callback
+ */
 export const handler = (event: any, context: any = {}, callback: any): any => {
 
   // Get request and request headers

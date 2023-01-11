@@ -1,8 +1,8 @@
 
 data "archive_file" "Lambda_function_archive" {
   type        = "zip"
-  source_dir  = "${path.module}/../aws/lambda/dist"
-  output_path = "${path.module}/../aws/lambda/dist/function.zip"
+  source_dir  = "${path.module}/../aws/${var.FUNCTION_NAME}/dist"
+  output_path = "${path.module}/../aws/${var.FUNCTION_NAME}/dist/function.zip"
 }
 
 # todo seems like it is installing dev dependencies
